@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SearchMatchTextblock"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="SearchMatchTextblock" 
+        MinHeight="280" MaxHeight="380" MinWidth="650" MaxWidth="650">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,40 +15,40 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" MinWidth="149" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Main Text" Margin="10" />
+        <TextBlock Text="Main Text" FontSize="14" Margin="10" />
 
-        <TextBox x:Name="MainTextBox" Grid.Column="1" Margin="10"
-                 MinHeight="50" Width="200" TextWrapping="Wrap"
+        <TextBox x:Name="MainTextBox" Grid.Column="1" Margin="10,10,0,0"
+                 MinHeight="80" Width="459" TextWrapping="Wrap"
                  AcceptsReturn="True" HorizontalAlignment="Left"
                  VerticalAlignment="Top"
-                 Text="The Golden Rule - he who has the gold, makes the rules" />
+                 Text="The Golden Rule - he who has the gold, makes the rules" FontSize="14" Height="50" />
 
-        <TextBlock Grid.Row="1" Text="highlight Text" Margin="10" />
+        <TextBlock Grid.Row="1" Text="Highlight Text" FontSize="14" Margin="10" />
 
         <TextBox Grid.Row="1" x:Name="HighlightTextBox" Grid.Column="1"
-                 Margin="10" MinWidth="200"
+                 Margin="10,10,0,0" MinWidth="200"
+                 FontSize="14" 
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Top" Text="gold" />
+                 VerticalAlignment="Top" Text="gold" Height="30" Width="459" />
 
-        <TextBlock Grid.Row="2" Margin="10">
-            <Run Text="No. of matches" />
-            <Run Text="{Binding ElementName=HighlightingTextBlock, Path=MatchCount, Mode=OneWay}" />
+        <TextBlock Grid.Row="2" Margin="10,20,10,0">
+            <Run Text="Number of matches:" FontSize="14" />
+            <Run Text="{Binding ElementName=HighlightingTextBlock, Path=MatchCount, Mode=OneWay}" FontSize="14" />
         </TextBlock>
 
         <local:HighlightingTextBlock 
             x:Name="HighlightingTextBlock"
             Grid.Row="2" Grid.Column="1"
-            Margin="10"
+            Margin="10,10,0,10"
             Text="{Binding ElementName=MainTextBox, Path=Text}"
             HighlightText="{Binding ElementName=HighlightTextBox, Path=Text}" 
-            FontSize="18" 
+            FontSize="14" 
             HighlightBackground="LightPink"
             HighlightForeground="Black" 
             TextWrapping="Wrap" />
     </Grid>
-
 </Window>
